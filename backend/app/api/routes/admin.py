@@ -70,5 +70,5 @@ async def tickets_overview(
     _: User = Depends(require_roles(Role.ADMIN)),
     db: AsyncSession = Depends(get_db),
 ) -> ResponseModel:
-    """管理端工单看板（13 §3.2 / 开发文档 01 §6.1）。"""
+    """管理端工单看板。"""
     return ok(data=await dashboard_service.get_ticket_overview(db))

@@ -49,7 +49,7 @@ class ChunkingConfig(BaseModel):
 
 
 class ChannelConfigOut(BaseModel):
-    """渠道配置（11 §8 / 开发文档 01 §6.2）：用户端默认知识库等。"""
+    """渠道配置：用户端默认知识库等。"""
 
     model_config = ConfigDict(from_attributes=True)
 

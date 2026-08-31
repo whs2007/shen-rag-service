@@ -230,7 +230,7 @@ export default function DashboardPage() {
         </>
       )}
       <Space style={{ marginTop: 8, fontSize: 12, color: '#9CA3AF' }}>
-        KPI 口径按 02 §7；AI 自动解决率以“当日未转人工会话/当日会话”近似（详见需求功能报告 §16）
+        KPI 口径；AI 自动解决率以“当日未转人工会话/当日会话”近似
       </Space>
     </div>
   );

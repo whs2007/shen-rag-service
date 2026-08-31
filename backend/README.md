@@ -1,10 +1,10 @@
-# AI 智能客服系统 · 后端（B1 基建骨架）
+# AI 智能客服系统 · 后端
 
-## 技术栈（08 §2）
+## 技术栈
 
 - Python 3.11+ / FastAPI + Uvicorn
 - SQLAlchemy 2.0（async）+ Alembic + PostgreSQL 15+（pgvector 已确认）
-- Redis（B1 可选：不可用时降级为告警，不影响启动；B2 起 Celery 依赖）
+- Redis（可选：不可用时降级为告警，不影响启动；异步任务可切换 Celery）
 - JWT（access 2h + refresh 7d，轮换）+ RBAC（admin/agent/viewer）
 - structlog 结构化日志（JSON 或控制台）
 - pytest + httpx 冒烟测试
@@ -13,7 +13,7 @@
 
 ### 1. 准备数据库
 
-需要 PostgreSQL 15+ 且已安装 pgvector 扩展（08 §2/#3）。本机已安装 pgvector 0.8.6（PostgreSQL 18）。
+需要 PostgreSQL 15+ 且已安装 pgvector 扩展。
 
 无本机 PG/Redis 时可用 `docker-compose up -d` 启动基础设施（postgres + pgvector + redis）。
 
@@ -55,15 +55,11 @@ pytest -q
 
 测试自动使用独立数据库 `ai_customer_service_test`（读取 `.env` 的 DATABASE_URL 推导），并执行迁移。
 
-## 默认账号（仅本地开发）
+## 初始管理员
 
-| 用户名 | 密码 | 角色 |
-| --- | --- | --- |
-| admin | admin123 | admin |
+迁移不再硬编码默认密码。首次部署请设置 `ADMIN_INITIAL_PASSWORD` 后执行 `python -m app.cli bootstrap`；开发环境未设置该变量时会创建 `admin/admin123` 并输出告警（仅限本地）。生产环境必须通过初始化流程创建管理员并设置强密码。
 
-生产环境不得使用种子账号，应由初始化流程创建并修改密码。
-
-## 目录结构（08 §3.4）
+## 目录结构
 
 ```
 backend/
@@ -80,9 +76,9 @@ backend/
 └─ pyproject.toml
 ```
 
-## B1 交付范围
+## 交付范围
 
-- 统一响应 `{code, message, data}` 与错误码（08 §7）
+- 统一响应 `{code, message, data}` 与错误码
 - JWT 登录 / 刷新 / /me + RBAC（admin 可访问用户列表演示）
 - 登录审计（audit_logs）
 - Redis 连接骨架（`core/redis.py`，优雅降级）

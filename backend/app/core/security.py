@@ -33,7 +33,7 @@ def verify_password(plain: str, hashed: str) -> bool:
 
 
 def validate_username(username: str) -> str | None:
-    """用户端注册用户名规则（开发文档 01 §2.1）：4~32 位，字母/数字/下划线/中文。"""
+    """用户端注册用户名规则：4~32 位，字母/数字/下划线/中文。"""
     if not username or not (4 <= len(username) <= 32):
         return "用户名长度需为 4~32 位"
     if not re.fullmatch(r"[A-Za-z0-9_\u4e00-\u9fa5]+", username):

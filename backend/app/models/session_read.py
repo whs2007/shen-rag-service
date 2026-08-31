@@ -1,4 +1,4 @@
-"""已读游标模型（11 §5.3 / 开发文档 01 §8.4 session_reads）。"""
+"""已读游标模型。"""
 
 from __future__ import annotations
 

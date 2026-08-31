@@ -1,12 +1,12 @@
 /**
- * 全局设计令牌（需求文档 01 §4）
+ * 全局设计令牌
  * 色彩 / 字体 / 间距 / 圆角 / 阴影统一在此定义，并通过 Ant Design 5 token 落地。
  */
 
 import type { ThemeConfig } from 'antd';
 
 export const designTokens = {
-  // 色彩（01 §4.1，基于原型浅色主题）
+  // 色彩（基于浅色主题）
   colorPrimary: '#3B82F6',
   colorPrimaryDark: '#2563EB',
   colorPrimaryLight: '#EFF6FF',

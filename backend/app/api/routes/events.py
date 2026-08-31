@@ -1,4 +1,4 @@
-"""实时事件流 SSE（11 §9 / 开发文档 01 §7）：scope 服务端权限过滤 + 20s 心跳。"""
+"""实时事件流 SSE：scope 服务端权限过滤 + 20s 心跳。"""
 
 from __future__ import annotations
 

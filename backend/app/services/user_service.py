@@ -91,7 +91,7 @@ async def reset_password(
 
 
 def _ensure_owned(session: ChatSession, user: User) -> None:
-    """行级权限：用户端只能访问自己的会话（越权 403，开发文档 01 §3）。"""
+    """行级权限：用户端只能访问自己的会话（越权 403）。"""
     if session.user_id is None or session.user_id != user.id:
         raise ForbiddenError("无权访问该会话")
 

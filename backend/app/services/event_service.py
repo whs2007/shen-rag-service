@@ -1,4 +1,4 @@
-"""事件总线（11 §9 / 开发文档 01 §7）：进程内 EventBus + Redis pub/sub 预留。
+"""事件总线：进程内 EventBus + Redis pub/sub 预留。
 
 订阅端点 /api/stream/events 按 scope 过滤；本模块负责事件发布与分发。
 多实例部署时切换 Redis pub/sub（channel=cs:events），接口不变。
@@ -143,7 +143,7 @@ class EventBus:
 
 
 def _scope_allows(sub: Subscriber, event: dict) -> bool:
-    """服务端 scope 权限过滤（开发文档 01 §7.3），严禁跨用户泄漏。"""
+    """服务端 scope 权限过滤，严禁跨用户泄漏。"""
     event_type = event.get("event")
     if sub.scope == "admin":
         return True

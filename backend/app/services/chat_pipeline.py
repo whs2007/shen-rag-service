@@ -1,7 +1,7 @@
-"""对话流水线（08 §4.4 / 开发文档 01 §3.1）：管理端与用户端共用。
+"""对话流水线：管理端与用户端共用。
 
 管理端：kb_ids 由前端指定；用户端：kb_ids 由渠道配置解析（忽略前端传入），
-引用脱敏（仅 document_name/question）。事件先落库后发布（开发文档 01 §9.5）。
+引用脱敏（仅 document_name/question）。事件先落库后发布。
 """
 
 from __future__ import annotations
@@ -81,7 +81,7 @@ async def run_chat_pipeline(
                 if session is None:
                     _emit(queue, "error", {"code": "40400", "message": "会话不存在"})
                     return
-                # 用户端行级权限：仅本人会话（开发文档 01 §3.1）
+                # 用户端行级权限：仅本人会话
                 if session.user_id != user.id:
                     _emit(queue, "error", {"code": "40300", "message": "无权访问该会话"})
                     return

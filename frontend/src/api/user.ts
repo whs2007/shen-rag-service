@@ -1,4 +1,4 @@
-/** 用户端接口（12 / 开发文档 01 §3）：注册登录、会话、工单、评价、SSE 对话。 */
+/** 用户端接口：注册登录、会话、工单、评价、SSE 对话。 */
 
 import { userRequest } from './userClient';
 import { getUserAccessToken } from './token';

@@ -1,4 +1,4 @@
-"""渠道配置模型（11 §8 / 开发文档 01 §8.6 channel_configs）。"""
+"""渠道配置模型。"""
 
 from __future__ import annotations
 

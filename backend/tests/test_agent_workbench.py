@@ -1,4 +1,4 @@
-"""客服工作台测试（13 / 开发文档 03 §5）：并发认领、回复/关闭闭环、事件作用域隔离。"""
+"""客服工作台测试：并发认领、回复/关闭闭环、事件作用域隔离。"""
 
 from __future__ import annotations
 
@@ -243,7 +243,7 @@ async def test_reply_close_rating_closed_loop(
 
 @pytest.mark.asyncio
 async def test_event_scope_isolation(client: AsyncClient, admin_headers, create_user):
-    """事件作用域隔离（13 §4 / 开发文档 01 §7.3）：服务端过滤，严禁跨用户泄漏。
+    """事件作用域隔离：服务端过滤，严禁跨用户泄漏。
 
     注：httpx 0.27 ASGITransport 对无限流会整体缓冲，无法在测试端增量读取 SSE；
     因此这里直接对 EventBus 订阅/发布做服务级验证（安全过滤核心逻辑），

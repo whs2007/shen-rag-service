@@ -1,4 +1,4 @@
-"""用户端接口（12 / 开发文档 01 §3）：对话 SSE、会话、工单、已读、评价。
+"""用户端接口：对话 SSE、会话、工单、已读、评价。
 
 权限：仅 user 角色；所有查询行级归属校验（越权 403）；响应字段最小化。
 """
@@ -51,7 +51,7 @@ async def user_chat(
     payload: UserChatRequest,
     user: User = Depends(require_roles(Role.USER)),
 ) -> StreamingResponse:
-    """用户端 SSE 流式对话（开发文档 01 §3.1）：kb_ids 由渠道配置解析，引用脱敏。"""
+    """用户端 SSE 流式对话：kb_ids 由渠道配置解析，引用脱敏。"""
     await enforce_chat_rate_limit(user)
     queue: asyncio.Queue = asyncio.Queue()
     task = asyncio.create_task(

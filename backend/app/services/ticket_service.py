@@ -204,7 +204,7 @@ async def _can_handle_ticket(db: AsyncSession, ticket_id: uuid.UUID, user: User)
 
 
 async def claim_ticket(db: AsyncSession, ticket_id: uuid.UUID, user: User) -> Ticket:
-    """原子认领（开发文档 01 §5.2 / 13 §2.3）：
+    """原子认领：
     单条条件 UPDATE，WHERE status='open'，rowcount=0 视为已被他人认领。
     """
     result = await db.execute(
@@ -249,7 +249,7 @@ async def claim_ticket(db: AsyncSession, ticket_id: uuid.UUID, user: User) -> Ti
 async def reply_ticket(
     db: AsyncSession, ticket_id: uuid.UUID, user: User, content: str
 ) -> Message:
-    """人工客服回复（开发文档 01 §5.4）：写入 role='agent' 消息，发布 message.new。"""
+    """人工客服回复：写入 role='agent' 消息，发布 message.new。"""
     ticket = await _can_handle_ticket(db, ticket_id, user)
     if ticket.status == "closed":
         raise BadRequestError("工单已关闭，不能回复")
@@ -367,7 +367,7 @@ async def list_agent_tickets(
     page: int = 1,
     page_size: int = 10,
 ) -> tuple[list[dict], int]:
-    """客服工作台队列（开发文档 01 §5.1）：open 按优先级+创建时间，processing 按认领时间。"""
+    """客服工作台队列：open 按优先级+创建时间，processing 按认领时间。"""
     stmt = select(Ticket)
     count_stmt = select(func.count()).select_from(Ticket)
     if status in ("open", "processing", "closed"):

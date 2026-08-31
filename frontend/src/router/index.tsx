@@ -1,4 +1,4 @@
-/** 路由表（需求文档 01 §3 / 00 §4.3）。 */
+/** 路由表。 */
 
 import { lazy, Suspense } from 'react';
 import { Navigate, createBrowserRouter } from 'react-router-dom';

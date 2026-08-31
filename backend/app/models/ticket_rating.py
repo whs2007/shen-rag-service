@@ -1,4 +1,4 @@
-"""工单满意度评价模型（11 §4.4 / 开发文档 01 §8.5 ticket_ratings）。"""
+"""工单满意度评价模型。"""
 
 from __future__ import annotations
 

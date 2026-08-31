@@ -1,5 +1,5 @@
 /**
- * 事件流 SSE 客户端（开发文档 02 §5）。
+ * 事件流 SSE 客户端。
  *
  * EventSource 无法携带 Authorization 头，因此使用 fetch 流式读取 +
  * 手动断线重连（等价自动重连）；event_id 幂等去重，重连成功后回调

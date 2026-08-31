@@ -1,4 +1,4 @@
-"""客服在线状态（13 §2.3 / 开发文档 01 §5.6）：内存实现，Redis 预留。"""
+"""客服在线状态：内存实现，Redis 预留。"""
 
 from __future__ import annotations
 

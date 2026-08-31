@@ -198,7 +198,7 @@ async def get_intents(db: AsyncSession, days: int = 7) -> dict:
 
 
 async def get_ticket_overview(db: AsyncSession) -> dict:
-    """管理端工单看板（13 §3.2 / 开发文档 01 §6.1）：
+    """管理端工单看板：
     总量 / 待处理 / 处理中 / 今日关闭 / 超时未认领（>30 分钟）。
     """
     total = await db.scalar(select(func.count()).select_from(Ticket)) or 0

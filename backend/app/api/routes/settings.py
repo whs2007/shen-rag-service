@@ -242,7 +242,7 @@ async def get_channel_config(
     _: User = Depends(require_roles(Role.ADMIN)),
     db: AsyncSession = Depends(get_db),
 ) -> ResponseModel:
-    """读取渠道配置（11 §8 / 开发文档 01 §6.2）。"""
+    """读取渠道配置。"""
     config = await settings_service.get_channel_config(db)
     if config is None:
         config = ChannelConfigOut(channel="web_user", default_kb_ids=[])
