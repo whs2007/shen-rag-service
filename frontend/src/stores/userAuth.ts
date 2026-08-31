@@ -45,7 +45,7 @@ export const useUserAuthStore = create<UserAuthState>()(
       },
     }),
     {
-      name: 'ai-customer-service-user-auth',
+      name: 'shen-rag-service-user-auth',
       partialize: (state) => ({ user: state.user }),
     },
   ),

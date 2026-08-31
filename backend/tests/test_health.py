@@ -22,6 +22,6 @@ async def test_health_ok(client: AsyncClient):
 async def test_health_has_version(client: AsyncClient):
     resp = await client.get("/health")
     data = resp.json()["data"]
-    assert data["app"] == "AI 智能客服系统"
+    assert data["app"] == "Shen Rag Service"
     assert data["version"]
 

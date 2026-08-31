@@ -1,10 +1,10 @@
-# AI 智能客服系统
+# Shen Rag Service
 
 面向企业的一站式 AI 智能客服平台，覆盖「知识库管理 → 检索验证 → 智能应答 → 应用评测 → 工单流转 → 数据看板」完整运营闭环。系统同时提供**管理端**、**客服工作台**与**用户自助端**，并内置权限隔离、审计日志与实时联动能力。
 
 > 技术核心：**FastAPI + LangGraph + RAG**（pgvector + 混合检索 + 重排），前端为 **React 18 + Ant Design 5**。
 
-[![CI](https://github.com/whs2007/ai-customer-service/actions/workflows/ci.yml/badge.svg)](https://github.com/whs2007/ai-customer-service/actions/workflows/ci.yml)
+[![CI](https://github.com/whs2007/shen-rag-service/actions/workflows/ci.yml/badge.svg)](https://github.com/whs2007/shen-rag-service/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)
 ![Node](https://img.shields.io/badge/Node-22-339933?logo=node.js&logoColor=white)
 ![License](https://img.shields.io/badge/License-待补充-lightgrey)

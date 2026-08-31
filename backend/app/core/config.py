@@ -26,7 +26,7 @@ class Settings(BaseSettings):
     )
 
     # 应用基础信息
-    app_name: str = "AI 智能客服系统"
+    app_name: str = "Shen Rag Service"
     version: str = "0.1.0"
     debug: bool = False
     json_logs: bool = False
@@ -36,7 +36,7 @@ class Settings(BaseSettings):
     environment: str = "development"
 
     # 数据库 / 缓存（08 §10）
-    database_url: str = "postgresql+asyncpg://postgres:postgres@127.0.0.1:5432/ai_customer_service"
+    database_url: str = "postgresql+asyncpg://postgres:postgres@127.0.0.1:5432/shen_rag_service"
     redis_url: str = "redis://127.0.0.1:6379/0"
     skip_redis: bool = False  # 测试环境跳过 Redis 探测
     # 连接池（08 §10：生产按并发调优；chat 流程已避免跨 LLM 调用持有连接）
@@ -49,8 +49,8 @@ class Settings(BaseSettings):
     # JWT（08 §4.1 / §8）：生产环境禁止使用默认值，启动时强校验
     jwt_secret: str = "change-me-in-production"
     jwt_algorithm: str = "HS256"
-    jwt_issuer: str = "ai-customer-service"
-    jwt_audience: str = "ai-customer-service-web"
+    jwt_issuer: str = "shen-rag-service"
+    jwt_audience: str = "shen-rag-service-web"
     access_token_expire_minutes: int = 120  # access 2h
     refresh_token_expire_days: int = 7  # refresh 7d
 

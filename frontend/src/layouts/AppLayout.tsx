@@ -92,7 +92,7 @@ export default function AppLayout() {
             lineHeight: 1.3,
           }}
         >
-          <div style={{ fontSize: 18, fontWeight: 600 }}>AI 智能客服系统</div>
+          <div style={{ fontSize: 18, fontWeight: 600 }}>Shen Rag Service</div>
           <div style={{ fontSize: 12, color: '#9CA3AF', marginTop: 2 }}>
             LangGraph + RAG
           </div>

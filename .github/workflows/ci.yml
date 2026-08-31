@@ -15,7 +15,7 @@ jobs:
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: ai_customer_service
+          POSTGRES_DB: shen_rag_service
         ports:
           - 5432:5432
         options: >-
@@ -27,7 +27,7 @@ jobs:
       run:
         working-directory: backend
     env:
-      DATABASE_URL: postgresql+asyncpg://postgres:postgres@127.0.0.1:5432/ai_customer_service
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@127.0.0.1:5432/shen_rag_service
       SKIP_REDIS: "1"
       ENVIRONMENT: test
       JWT_SECRET: ci-secret-0123456789abcdef0123456789abcdef

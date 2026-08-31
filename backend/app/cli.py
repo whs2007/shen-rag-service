@@ -89,7 +89,7 @@ async def _bootstrap() -> int:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="AI 智能客服系统运维工具")
+    parser = argparse.ArgumentParser(description="Shen Rag Service运维工具")
     sub = parser.add_subparsers(dest="command", required=True)
 
     sub.add_parser("bootstrap", help="引导初始管理员（读取 ADMIN_* 环境变量）")

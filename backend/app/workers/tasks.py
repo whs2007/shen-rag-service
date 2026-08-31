@@ -17,7 +17,7 @@ from app.core.config import get_settings
 settings = get_settings()
 
 celery_app = Celery(
-    "ai_customer_service",
+    "shen_rag_service",
     broker=settings.redis_url,
     backend=settings.redis_url,
 )

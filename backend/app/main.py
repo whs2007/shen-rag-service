@@ -77,7 +77,7 @@ def create_app() -> FastAPI:
     app = FastAPI(
         title=settings.app_name,
         version=settings.version,
-        description="AI 智能客服系统管理端后端 API（B1 基建骨架）",
+        description="Shen Rag Service管理端后端 API（B1 基建骨架）",
         lifespan=lifespan,
         docs_url="/docs" if settings.debug else None,
         redoc_url=None,

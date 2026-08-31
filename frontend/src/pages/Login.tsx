@@ -42,7 +42,7 @@ export default function Login() {
       <Card style={{ width: 400, borderRadius: 16, boxShadow: '0 1px 3px rgba(0,0,0,.06)' }}>
         <div style={{ textAlign: 'center', marginBottom: 24 }}>
           <Typography.Title level={3} style={{ marginBottom: 4, fontSize: 20 }}>
-            AI 智能客服系统
+            Shen Rag Service
           </Typography.Title>
           <Typography.Text type="secondary" style={{ fontSize: 12 }}>
             LangGraph + RAG · 管理端

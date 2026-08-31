@@ -16,7 +16,7 @@ from pathlib import Path
 import pytest
 from httpx import ASGITransport, AsyncClient
 
-_TEST_DB_NAME = "ai_customer_service_test"
+_TEST_DB_NAME = "shen_rag_service_test"
 _BACKEND_DIR = Path(__file__).resolve().parents[1]
 
 
@@ -41,8 +41,8 @@ _load_dotenv(_BACKEND_DIR / ".env")
 _BASE_URL = os.environ.get("TEST_DATABASE_URL") or os.environ.get("DATABASE_URL")
 if not _BASE_URL:
     raise RuntimeError("缺少 DATABASE_URL / TEST_DATABASE_URL（请在 backend/.env 中配置）")
-if "/ai_customer_service" in _BASE_URL:
-    _TEST_URL = _BASE_URL.replace("/ai_customer_service", f"/{_TEST_DB_NAME}", 1)
+if "/shen_rag_service" in _BASE_URL:
+    _TEST_URL = _BASE_URL.replace("/shen_rag_service", f"/{_TEST_DB_NAME}", 1)
 else:
     _TEST_URL = _BASE_URL
 os.environ["DATABASE_URL"] = _TEST_URL

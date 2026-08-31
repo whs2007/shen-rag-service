@@ -2,7 +2,7 @@
 # frontend(nginx) / prometheus / grafana / backup
 # 用法：先在 backend/.env 设置 POSTGRES_PASSWORD / REDIS_PASSWORD / JWT_SECRET / METRICS_TOKEN，
 # 然后 docker compose up -d --build
-name: ai-customer-service
+name: shen-rag-service
 
 x-service-defaults: &service-defaults
   init: true
@@ -23,7 +23,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?请在 .env 中设置 POSTGRES_PASSWORD}
-      POSTGRES_DB: ai_customer_service
+      POSTGRES_DB: shen_rag_service
     volumes:
       - pg_data:/var/lib/postgresql/data
     restart: unless-stopped
@@ -67,7 +67,7 @@ services:
     env_file: .env
     environment:
       # docker 内使用服务名；凭据从 .env 注入，禁止默认口令
-      DATABASE_URL: postgresql+asyncpg://postgres:${POSTGRES_PASSWORD:?请在 .env 中设置 POSTGRES_PASSWORD}@postgres:5432/ai_customer_service
+      DATABASE_URL: postgresql+asyncpg://postgres:${POSTGRES_PASSWORD:?请在 .env 中设置 POSTGRES_PASSWORD}@postgres:5432/shen_rag_service
       REDIS_URL: redis://:${REDIS_PASSWORD:?请在 .env 中设置 REDIS_PASSWORD}@redis:6379/0
       ENVIRONMENT: ${ENVIRONMENT:-production}
       JSON_LOGS: "true"
@@ -110,7 +110,7 @@ services:
     container_name: ai-cs-migrate
     env_file: .env
     environment:
-      DATABASE_URL: postgresql+asyncpg://postgres:${POSTGRES_PASSWORD:?请在 .env 中设置 POSTGRES_PASSWORD}@postgres:5432/ai_customer_service
+      DATABASE_URL: postgresql+asyncpg://postgres:${POSTGRES_PASSWORD:?请在 .env 中设置 POSTGRES_PASSWORD}@postgres:5432/shen_rag_service
       ENVIRONMENT: ${ENVIRONMENT:-production}
     # 迁移后引导初始管理员（生产需在 .env 设置 ADMIN_INITIAL_PASSWORD）
     command: sh -c "alembic upgrade head && python -m app.cli bootstrap"
@@ -125,7 +125,7 @@ services:
     container_name: ai-cs-worker
     env_file: .env
     environment:
-      DATABASE_URL: postgresql+asyncpg://postgres:${POSTGRES_PASSWORD:?请在 .env 中设置 POSTGRES_PASSWORD}@postgres:5432/ai_customer_service
+      DATABASE_URL: postgresql+asyncpg://postgres:${POSTGRES_PASSWORD:?请在 .env 中设置 POSTGRES_PASSWORD}@postgres:5432/shen_rag_service
       REDIS_URL: redis://:${REDIS_PASSWORD:?请在 .env 中设置 REDIS_PASSWORD}@redis:6379/0
       ENVIRONMENT: ${ENVIRONMENT:-production}
       JSON_LOGS: "true"
@@ -157,7 +157,7 @@ services:
     container_name: ai-cs-beat
     env_file: .env
     environment:
-      DATABASE_URL: postgresql+asyncpg://postgres:${POSTGRES_PASSWORD:?请在 .env 中设置 POSTGRES_PASSWORD}@postgres:5432/ai_customer_service
+      DATABASE_URL: postgresql+asyncpg://postgres:${POSTGRES_PASSWORD:?请在 .env 中设置 POSTGRES_PASSWORD}@postgres:5432/shen_rag_service
       REDIS_URL: redis://:${REDIS_PASSWORD:?请在 .env 中设置 REDIS_PASSWORD}@redis:6379/0
       ENVIRONMENT: ${ENVIRONMENT:-production}
       TASK_BACKEND: celery
@@ -235,7 +235,7 @@ services:
     command:
       - |
         while true; do
-          pg_dump -U postgres -h postgres -d ai_customer_service | gzip > /backups/dump_$$(date +%F_%H%M%S).sql.gz
+          pg_dump -U postgres -h postgres -d shen_rag_service | gzip > /backups/dump_$$(date +%F_%H%M%S).sql.gz
           find /backups -name 'dump_*.sql.gz' -mtime +7 -delete
           echo "[backup] completed at $$(date +%F_%H%M%S)"
           sleep 86400

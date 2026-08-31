@@ -1,4 +1,4 @@
-# AI 智能客服系统 · 后端
+# Shen Rag Service · 后端
 
 ## 技术栈
 
@@ -53,7 +53,7 @@ uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 pytest -q
 ```
 
-测试自动使用独立数据库 `ai_customer_service_test`（读取 `.env` 的 DATABASE_URL 推导），并执行迁移。
+测试自动使用独立数据库 `shen_rag_service_test`（读取 `.env` 的 DATABASE_URL 推导），并执行迁移。
 
 ## 初始管理员
 
